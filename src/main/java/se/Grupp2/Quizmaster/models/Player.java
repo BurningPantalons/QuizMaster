@@ -31,7 +31,7 @@ public class Player {
         return position;
     }
 
-    public void setPosition(int diceRoll) {
-        position = this.position + diceRoll;
+    public void setPosition(int diceRoll, int currentPosition) {
+        this.position = currentPosition + diceRoll;
     }
 }
