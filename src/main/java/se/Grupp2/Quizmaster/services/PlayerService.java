@@ -6,7 +6,7 @@ public class PlayerService {
 
     Player[] players;
 
-    public void movePlayer(int nop, int diceRoll){
-        players[nop].setPosition(diceRoll);
+    public void movePlayer(int playerNumber, int diceRoll){
+        players[playerNumber].setPosition(diceRoll);
     }
 }
