@@ -3,10 +3,12 @@ package se.Grupp2.Quizmaster.models;
 public class Player {
     String userName;
     String password;
+    int position;
 
     public Player(String userName, String password) {
         this.userName = userName;
         this.password = password;
+        int position = 0;
     }
 
     public String getUserName() {
@@ -23,5 +25,13 @@ public class Player {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void movePosition(diceRoll) {
+        position = position + diceRoll;
     }
 }
