@@ -8,7 +8,7 @@ public class Player {
     public Player(String userName, String password) {
         this.userName = userName;
         this.password = password;
-        int position = 0;
+        this.position = 0;
     }
 
     public String getUserName() {
@@ -31,7 +31,7 @@ public class Player {
         return position;
     }
 
-    public void setPosition(int diceRoll, int currentPosition) {
-        this.position = currentPosition + diceRoll;
+    public void setPosition(int position) {
+        this.position = position;
     }
 }

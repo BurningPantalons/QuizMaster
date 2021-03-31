@@ -8,7 +8,10 @@ public class PlayerService {
 
     Player[] players;
 
-    public void movePlayer(int playerNumber, int diceRoll, int currentPosition){
-        players[playerNumber].setPosition(diceRoll, currentPosition);
+    public void movePlayer(int playerNumber, int diceRoll, int currentPosition) {
+
+        int newPosition = diceRoll + currentPosition;
+        players[playerNumber].setPosition(newPosition);
+
     }
 }
