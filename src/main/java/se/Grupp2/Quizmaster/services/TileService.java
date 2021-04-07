@@ -23,12 +23,20 @@ public class TileService {
                 false,
                 false,
                 false);
-        for (i = 1; i > tiles.length; i++){
-            Tile questionTile = new Tile(i,
-                    false,
-                    true,
-                    false,
-                    false);
+        for (i = 1; i <= tiles.length; i++){
+            if (i == tiles.length){
+                Tile finishTile = new Tile(i,
+                        true,
+                        false,
+                        false,
+                        false);
+            } else {
+                Tile questionTile = new Tile(i,
+                        false,
+                        true,
+                        false,
+                        false);
+            }
             setQuestion();
         }
         addBuff(numberOfBuffs);
