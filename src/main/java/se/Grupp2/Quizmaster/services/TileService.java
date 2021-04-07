@@ -1,10 +1,11 @@
 package se.Grupp2.Quizmaster.services;
 
+import org.springframework.stereotype.Service;
 import se.Grupp2.Quizmaster.models.Tile;
 
+@Service
 public class TileService {
 
-    private Tile tile;
     Tile[] tiles;
     private int numberOfBuffs = 3;
     private int numberOfDebuffs = 3;
