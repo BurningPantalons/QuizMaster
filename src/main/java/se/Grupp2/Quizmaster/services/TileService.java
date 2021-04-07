@@ -56,7 +56,7 @@ public class TileService {
         addDebuff();
     }
 
-    private void addDebuff() {
+    private void addDebuff(int numberOfDebuffs) {
         int debuffTiles = 0;
         double rng = Math.random() * 100;
         while ( debuffTiles < numberOfDebuffs ){
