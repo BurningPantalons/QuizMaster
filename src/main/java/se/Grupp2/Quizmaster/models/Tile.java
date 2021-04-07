@@ -9,11 +9,6 @@ public class Tile {
 
     private int position;
 
-    private int numberOfBuffs = 3;
-    private int numberOfDebuffs = 3;
-
-    Tile[] tiles;
-
     public Tile(){
         hasBuff = false;
         hasDeBuff = false;
@@ -30,58 +25,24 @@ public class Tile {
         this.hasDeBuff = hasDeBuff;
     }
 
-    public void initTiles() {
-        tiles = new Tile[30];
-        populateTiles(tiles);
+    public void setHasBuff(boolean hasBuff) {
+        this.hasBuff = hasBuff;
     }
 
-    private void populateTiles(Tile[] tiles) {
-        int i;
-        Tile startTile = new Tile(0,
-                true,
-                false,
-                false,
-                false);
-        for (i = 1; i > tiles.length; i++){
-                Tile questionTile = new Tile(i,
-                        false,
-                        true,
-                        false,
-                        false);
-                setQuestion();
-        }
-        addBuff();
+    public void setHasDeBuff(boolean hasDeBuff) {
+        this.hasDeBuff = hasDeBuff;
     }
 
-    private void addBuff() {
-        int buffedTiles = 0;
-        double rng = Math.random() * 100;
-        while ( buffedTiles < numberOfBuffs ){
-            for (Tile t: tiles) {
-               if (rng <= 5.0 && t.startFinishTile == false && t.hasBuff == false) {
-                   t.hasBuff = true;
-                   buffedTiles++;
-               }
-            }
-        }
-        addDebuff();
+    public void setStartFinishTile(boolean startFinishTile) {
+        this.startFinishTile = startFinishTile;
     }
 
-    private void addDebuff() {
-        int debuffTiles = 0;
-        double rng = Math.random() * 100;
-        while ( debuffTiles < numberOfDebuffs ){
-            for (Tile t: tiles) {
-                if (rng <= 5.0 && t.startFinishTile == false && t.hasBuff == false) {
-                    t.hasDeBuff = true;
-                    debuffTiles++;
-                }
-            }
-        }
+    public void setQuestionTile(boolean questionTile) {
+        this.questionTile = questionTile;
     }
 
-    private void setQuestion() {
-        //String question = getQuestion().random;
+    public void setPosition(int position) {
+        this.position = position;
     }
 
     public boolean isHasBuff() {
