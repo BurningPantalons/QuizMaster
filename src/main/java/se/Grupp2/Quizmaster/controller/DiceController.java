@@ -9,17 +9,16 @@ import se.Grupp2.Quizmaster.services.DiceService;
 import org.springframework.ui.Model;
 import se.Grupp2.Quizmaster.models.Dice;
 
-@RestController
-@RequestMapping("/game")
+@Controller
 public class DiceController {
 
     @Autowired
     DiceService diceService;
 
-    @GetMapping
-    public Dice getDiceRoll() {
-       return diceService.diceRoll();
-
+    @RequestMapping("/game")
+    public String getDiceRoll(Model model) {
+       model.addAttribute("gameDice",diceService.diceRoll());
+    return "game";
     }
 
 }

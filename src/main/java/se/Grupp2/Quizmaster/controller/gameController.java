@@ -21,10 +21,6 @@ public class gameController {
         return "index";
     }
 
-    @RequestMapping("/game")
-    public String startGame(){
-        return "game";
-    }
 
     @RequestMapping("/questions")
     public String showQuestions(){
