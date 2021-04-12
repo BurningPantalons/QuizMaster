@@ -36,6 +36,7 @@ public class QuestionService {
 
         JSONObject jObj = new JSONObject(result);
         JSONArray jArray = jObj.getJSONArray("results");
+
         for (int i = 0; i < jArray.length(); i++) {
             JSONObject obj = jArray.getJSONObject(i);
             questions = convertString(obj.getString("question"));
@@ -44,19 +45,10 @@ public class QuestionService {
             JSONArray incorrectAnswers = obj.getJSONArray("incorrect_answers");
             for (int j = 0; j < incorrectAnswers.length(); j++) {
                 answers.add(convertString(incorrectAnswers.getString(j)));
-
             }
         }
-
-        System.out.println(answers.toString());
         Collections.shuffle(answers);
-        System.out.println("Answers: ");
-        for(String randomOutput : answers) {
-            System.out.println(randomOutput);
-        }
-
         return new Question(questions, answers);
-
     }
 
     @Bean
