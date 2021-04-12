@@ -1,4 +1,4 @@
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -9,6 +9,10 @@
 </head>
 <body class="background">
 <h1>GAMEBOARD</h1>
-
+<h1 style="color: white"> Question: <span th:text="${question.getQuestion()}"></span></h1>
+<h2 style="color: white"> Answer1: <span th:text="${question.getAnswers().get(0)}"></span></h2>
+<h2 style="color: white"> Answer2: <span th:text="${question.getAnswers().get(1)}"></span></h2>
+<h2 style="color: white"> Answer3: <span th:text="${question.getAnswers().get(2)}"></span></h2>
+<h2 style="color: white"> Answer4: <span th:text="${question.getAnswers().get(3)}"></span></h2>
 </body>
 </html>
