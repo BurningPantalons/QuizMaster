@@ -1,3 +1,28 @@
 .background {
     background-image: url("/Infested.jpg");
 }
+
+.mainMenu {
+    background-color: brown;
+    margin-left: 20vw;
+    margin-right: 20vw;
+    margin-top: 20vh;
+
+}
+
+.menuContainer {
+    display: flex;
+    justify-content: center;
+    border: 1px black solid;
+    padding: 20vh;
+
+}
+
+.menuOptions {
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    margin: 10px;
+}
