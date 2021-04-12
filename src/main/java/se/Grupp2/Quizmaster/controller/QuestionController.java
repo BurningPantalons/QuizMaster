@@ -17,6 +17,6 @@ public class QuestionController {
     @RequestMapping("/game/question")
     public String putQuestion(Model model) throws JSONException {
         model.addAttribute("question", questionService.getQuestion());
-        return "game";
+        return "question";
     }
 }

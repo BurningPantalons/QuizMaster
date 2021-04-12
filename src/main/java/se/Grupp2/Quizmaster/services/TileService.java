@@ -53,7 +53,7 @@ public class TileService {
                 }
             }
         }
-        addDebuff();
+        addDebuff(numberOfDebuffs);
     }
 
     private void addDebuff(int numberOfDebuffs) {

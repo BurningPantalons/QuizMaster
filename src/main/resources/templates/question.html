@@ -7,7 +7,11 @@
     <title>Start</title>
     <link rel="stylesheet" href="/styles.css">
 </head>
-<body class="background">
-<h1>GAMEBOARD</h1>
+<body>
+<h1> Question: <span th:text="${question.getQuestion()}"></span></h1>
+<h2> Answer1: <span th:text="${question.getAnswers().get(0)}"></span></h2>
+<h2> Answer2: <span th:text="${question.getAnswers().get(1)}"></span></h2>
+<h2> Answer3: <span th:text="${question.getAnswers().get(2)}"></span></h2>
+<h2> Answer4: <span th:text="${question.getAnswers().get(3)}"></span></h2>
 </body>
 </html>
