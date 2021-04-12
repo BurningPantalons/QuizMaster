@@ -1,36 +1,22 @@
 package se.Grupp2.Quizmaster.controller;
 
 
+import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
+import se.Grupp2.Quizmaster.services.QuestionService;
 
-import java.util.Arrays;
-
-@RestController
+@Controller
 public class QuestionController {
 
     @Autowired
-    RestTemplate restTemplate;
+    QuestionService questionService;
 
-    @RequestMapping(value = "/game/question")
-    public String getQuestion() {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-        HttpEntity<String> entity = new HttpEntity<String>(headers);
-
-        return restTemplate.exchange("https://opentdb.com/api.php?amount=1&category=9&difficulty=medium&type=multiple",
-                HttpMethod.GET, entity, String.class).getBody();
-    }
-
-    @Bean
-    public RestTemplate getRestTemplate() {
-        return new RestTemplate();
+    @RequestMapping("/game/question")
+    public String putQuestion(Model model) throws JSONException {
+        model.addAttribute("question", questionService.getQuestion());
+        return "game";
     }
 }
