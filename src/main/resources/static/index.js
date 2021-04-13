@@ -25,12 +25,12 @@ function createUserWindow(){
     $('main').append(`<div class="loginContainer">
     <div class="newUserForm">
         <form>
-            <input type="text" placeholder="Enter username">
-            <input type="password" placeholder="Enter password">
+            <input type="text" id="name" placeholder="Enter username">
+            <input type="password" id="password" placeholder="Enter password">
         </form>
     </div>
     <div class="newUserButton">
-        <button>REGISTER</button>
+        <button onclick="savePlayer()">REGISTER</button>
         <button onclick="logInWindow()">BACK</button>
     </div>
     </div>`);
@@ -47,5 +47,29 @@ function startScreen(){
                 <button type="button" class="quitGame">QUIT</button>
             </div>
         </div>`)
+}
+function savePlayer() {
+
+        let player = {
+            name: $('#name').val(),
+            password: $('#password').val()
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: 'index',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            data: JSON.stringify(player),
+            success: function () {
+                alert('Registered');
+            },
+            error: function () {
+                alert('Error!');
+            }
+
+        });
 }
 
