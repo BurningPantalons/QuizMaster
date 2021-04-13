@@ -3,43 +3,42 @@ package se.Grupp2.Quizmaster.services;
 import org.springframework.stereotype.Service;
 import se.Grupp2.Quizmaster.models.Tile;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class TileService {
 
-    Tile[] tiles;
+    private List<Tile> tiles = new ArrayList<>();
     private int numberOfBuffs = 3;
     private int numberOfDebuffs = 3;
+    private int numberOfTiles = 30;
 
-
-    public void initTiles() {
-        tiles = new Tile[30];
-        populateTiles(tiles);
-    }
-
-    private void populateTiles(Tile[] tiles) {
-        int i;
+   public List<Tile> populateTiles() {
         Tile startTile = new Tile(0,
                 true,
                 false,
                 false,
                 false);
-        for (i = 1; i <= tiles.length; i++){
-            if (i == tiles.length){
+                tiles.add(startTile);
+        for (int i = 1; i <= numberOfTiles; i++){
+            if (i == numberOfTiles){
                 Tile finishTile = new Tile(i,
                         true,
                         false,
                         false,
                         false);
+                tiles.add(finishTile);
             } else {
                 Tile questionTile = new Tile(i,
                         false,
                         true,
                         false,
                         false);
+                tiles.add(questionTile);
             }
-            setQuestion();
         }
-        addBuff(numberOfBuffs);
+       return tiles;
     }
 
     private void addBuff(int numberOfBuffs) {
@@ -68,9 +67,4 @@ public class TileService {
             }
         }
     }
-
-    private void setQuestion() {
-        //String question = getQuestion().random;
-    }
-
 }
