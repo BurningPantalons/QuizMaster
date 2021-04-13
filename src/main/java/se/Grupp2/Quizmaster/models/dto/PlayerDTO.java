@@ -1,32 +1,30 @@
 package se.Grupp2.Quizmaster.models.dto;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "players")
 public class PlayerDTO {
 
     @Id
-    private String userName;
+    private String name;
 
     private String password;
 
-    public PlayerDTO(String userName, String password) {
-        this.userName = userName;
+    public PlayerDTO(String name, String password) {
+        this.name = name;
         this.password = password;
     }
 
     public PlayerDTO() {
     }
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPassword() {

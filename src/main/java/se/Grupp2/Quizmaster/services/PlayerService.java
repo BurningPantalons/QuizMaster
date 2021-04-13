@@ -34,10 +34,10 @@ public class PlayerService {
     }
 
     private PlayerDTO convertFromPlayer(Player player) {
-        return new PlayerDTO(player.getUserName(), player.getPassword());
+        return new PlayerDTO(player.getName(), player.getPassword());
     }
 
     private Player convertToPlayer(PlayerDTO playerDTO) {
-        return new Player(playerDTO.getUserName(), playerDTO.getPassword());
+        return new Player(playerDTO.getName(), playerDTO.getPassword());
     }
 }

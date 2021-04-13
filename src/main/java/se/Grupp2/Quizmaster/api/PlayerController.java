@@ -9,7 +9,7 @@ import se.Grupp2.Quizmaster.models.Player;
 import se.Grupp2.Quizmaster.services.PlayerService;
 
 @RestController
-@RequestMapping("api/players")
+@RequestMapping("index")
 public class PlayerController {
 
     @Autowired
