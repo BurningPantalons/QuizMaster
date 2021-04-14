@@ -27,6 +27,7 @@ public class QuestionService {
     public Question getQuestion() throws JSONException {
         String questions = null;
         List<String> answers = new ArrayList<>();
+        String correctAnswer = null;
 
         HttpHeaders headers = new HttpHeaders();
         headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
@@ -40,6 +41,7 @@ public class QuestionService {
         for (int i = 0; i < jArray.length(); i++) {
             JSONObject obj = jArray.getJSONObject(i);
             questions = convertString(obj.getString("question"));
+            correctAnswer = convertString(obj.getString("correct_answer"));
             answers.add(convertString(obj.getString("correct_answer")));
 
             JSONArray incorrectAnswers = obj.getJSONArray("incorrect_answers");
@@ -48,7 +50,7 @@ public class QuestionService {
             }
         }
         Collections.shuffle(answers);
-        return new Question(questions, answers);
+        return new Question(questions, answers, correctAnswer);
     }
 
     @Bean
