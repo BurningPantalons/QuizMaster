@@ -1,7 +1,3 @@
-.background {
-    background-image: url("/Infested.jpg");
-}
-
 .mainMenu {
     background-color: brown;
     margin-left: 20vw;
@@ -24,5 +20,10 @@
 }
 
 button {
-    margin: 10px;
+    margin: 40px;
+    font-size: larger;
+}
+h1 {
+    color: white;
+
 }
