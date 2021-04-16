@@ -9,12 +9,12 @@ function logInWindow() {
     $('main').append(`<div class="loginContainer">
     <div class="loginForm">
         <form>
-            <input type="text" placeholder="Username">
-            <input type="password" placeholder="Password">
+            <input type="text" id="name" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
         </form>
     </div>
     <div class="buttonsContainer">
-        <button onclick="startScreen()">LOGIN</button>
+        <button onclick="loginUser()">LOGIN</button>
         <button onclick="createUserWindow()">SIGN UP</button>
     </div>
 </div>`);
@@ -27,6 +27,7 @@ function createUserWindow(){
         <form>
             <input type="text" id="name" placeholder="Enter username">
             <input type="password" id="password" placeholder="Enter password">
+            <input type="email" id="email" placeholder="Enter email">
         </form>
     </div>
     <div class="newUserButton">
@@ -41,7 +42,7 @@ function startScreen(){
     $('main').append(`
        <div class="menuContainer">
             <div class="menuOptions">
-                <button type="button" class="newGame">NEW GAME</button>
+                <button onclick="location.href = '/game';" type="button" class="newGame">NEW GAME</button>
                 <button type="button" class="settings">SETTINGS</button>
                 <button type="button" class="myProfile">MY PROFILE</button>
                 <button type="button" class="quitGame">QUIT</button>
@@ -51,13 +52,15 @@ function startScreen(){
 function savePlayer() {
 
         let player = {
-            name: $('#name').val(),
-            password: $('#password').val()
+            username: $('#name').val(),
+            password: $('#password').val(),
+            email: $('#email').val(),
+            role: ["user"]
         };
 
         $.ajax({
             type: 'POST',
-            url: 'index',
+            url: '/api/auth/signup',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
@@ -71,5 +74,29 @@ function savePlayer() {
             }
 
         });
+}
+function loginUser() {
+
+    let user = {
+        username: $('#name').val(),
+        password: $('#password').val()
+    };
+
+    $.ajax({
+        type: 'POST',
+        url: '/api/auth/signin',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        data: JSON.stringify(user),
+        success: function () {
+           startScreen();
+        },
+        error: function () {
+            alert('Error!');
+        }
+
+    });
 }
 
