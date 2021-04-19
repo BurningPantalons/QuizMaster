@@ -23,6 +23,8 @@ public class BoardController {
     @RequestMapping("/game")
     public String startGame(Model model) {
         model.addAttribute("tiles",tileService.populateTiles());
+        //model.addAttribute("buffs", tileService.addBuff(3));
+        //model.addAttribute("debuffs", tileService.addDebuff(3));
         model.addAttribute("gameDice",diceService.diceRoll());
         model.addAttribute("question", questionService.getQuestion());
         return "game";

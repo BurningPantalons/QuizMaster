@@ -21,7 +21,7 @@ public class TileService {
                 false,
                 false);
                 tiles.add(startTile);
-        for (int i = 1; i <= numberOfTiles; i++){
+        for (int i = 1; i <= numberOfTiles - 1; i++){
             if (i == numberOfTiles){
                 Tile finishTile = new Tile(i,
                         true,
@@ -41,7 +41,7 @@ public class TileService {
        return tiles;
     }
 
-    private void addBuff(int numberOfBuffs) {
+    public int addBuff(int numberOfBuffs) {
         int buffedTiles = 0;
         double rng = Math.random() * 100;
         while ( buffedTiles < numberOfBuffs ){
@@ -52,10 +52,10 @@ public class TileService {
                 }
             }
         }
-        addDebuff(numberOfDebuffs);
+        return buffedTiles;
     }
 
-    private void addDebuff(int numberOfDebuffs) {
+    public int addDebuff(int numberOfDebuffs) {
         int debuffTiles = 0;
         double rng = Math.random() * 100;
         while ( debuffTiles < numberOfDebuffs ){
@@ -66,5 +66,6 @@ public class TileService {
                 }
             }
         }
+        return debuffTiles;
     }
 }
