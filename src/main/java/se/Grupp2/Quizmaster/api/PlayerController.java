@@ -1,19 +1,23 @@
 package se.Grupp2.Quizmaster.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import se.Grupp2.Quizmaster.models.Player;
 import se.Grupp2.Quizmaster.services.PlayerService;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("index")
+@RequestMapping("players")
 public class PlayerController {
 
     @Autowired
     PlayerService playerService;
+
+    @GetMapping
+    public List<Player> getAllPlayers() {
+        return playerService.getAllPlayers();
+    }
 
     @PostMapping
     public Player addPlayer(@RequestBody Player player) {
