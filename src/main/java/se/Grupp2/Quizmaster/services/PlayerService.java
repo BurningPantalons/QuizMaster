@@ -6,6 +6,7 @@ import se.Grupp2.Quizmaster.dao.PlayerDAO;
 import se.Grupp2.Quizmaster.models.Player;
 import se.Grupp2.Quizmaster.models.dto.PlayerDTO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -33,11 +34,21 @@ public class PlayerService {
 
     }
 
+    public List<Player> getAllPlayers() {
+        List<Player> players = new ArrayList<>();
+        for (PlayerDTO playerDTO : playerDAO.getAllPlayers()){
+            Player player = convertToPlayer(playerDTO);
+            players.add(player);
+        }
+        return players;
+    }
+
+
     private PlayerDTO convertFromPlayer(Player player) {
-        return new PlayerDTO(player.getName(), player.getPassword());
+        return new PlayerDTO(player.getId(), player.getName());
     }
 
     private Player convertToPlayer(PlayerDTO playerDTO) {
-        return new Player(playerDTO.getName(), playerDTO.getPassword());
+        return new Player(playerDTO.getId(), playerDTO.getName());
     }
 }

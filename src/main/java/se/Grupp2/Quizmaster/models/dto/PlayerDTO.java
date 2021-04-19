@@ -7,15 +7,17 @@ import javax.persistence.*;
 public class PlayerDTO {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+
     private String name;
 
-    private String password;
 
-    public PlayerDTO(String name, String password) {
+    public PlayerDTO(Integer id, String name) {
         this.name = name;
-        this.password = password;
-    }
+        this.id = id;
 
+    }
     public PlayerDTO() {
     }
 
@@ -27,11 +29,11 @@ public class PlayerDTO {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
+    public Integer getId() {
+        return id;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

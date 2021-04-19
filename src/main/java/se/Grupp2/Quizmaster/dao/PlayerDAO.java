@@ -16,4 +16,8 @@ public class PlayerDAO {
     public PlayerDTO addPlayer(PlayerDTO playerDTO) {
         return playerRepository.save(playerDTO);
     }
+
+    public Iterable<PlayerDTO> getAllPlayers() {
+        return playerRepository.findAll();
+    }
 }

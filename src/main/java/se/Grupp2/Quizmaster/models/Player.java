@@ -2,12 +2,12 @@ package se.Grupp2.Quizmaster.models;
 
 public class Player {
     String name;
-    String password;
+    Integer id;
     int position;
 
-    public Player(String name, String password) {
+    public Player(Integer id, String name) {
         this.name = name;
-        this.password = password;
+        this.id = id;
         this.position = 0;
     }
 
@@ -19,19 +19,19 @@ public class Player {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public int getPosition() {
         return position;
     }
 
     public void setPosition(int position) {
         this.position = position;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 }
