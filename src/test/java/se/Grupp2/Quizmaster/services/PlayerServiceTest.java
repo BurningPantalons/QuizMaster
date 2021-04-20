@@ -78,6 +78,9 @@ class PlayerServiceTest {
     }
 
     @Test
+    @DisplayName("Test if you can remove a player from db")
     void deletePlayer() {
+        playerService.deletePlayer(1);
+        Mockito.verify(playerDAO, Mockito.times(1)).removePlayer(1);
     }
 }
