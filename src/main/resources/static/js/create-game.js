@@ -1,6 +1,6 @@
 $(function () {
 
-        $('main').append(`<div class="loginContainer">
+        $('.menuContainer').append(`<div class="loginContainer">
             <div class="newUserForm">
                 <form>
                     <input type="text" id="name" placeholder="Enter username">  

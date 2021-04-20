@@ -1,8 +1,3 @@
-/*Ska ta hand om:
-* Klick-event för menyknappar
-* pop-up ruta för inlogg
-* funktion som kallar på dao-controller till log-in uppgifter
-* */
 window.onload = startScreen()
 
 
@@ -12,10 +7,10 @@ function startScreen(){
     $('.container').append(`
        <div class="menuContainer">
             <div class="menuOptions">
-                <button onclick="location.href = '/create-game';" type="button" class="newGame">CREATE GAME</button>
-                <button type="button" class="settings">SETTINGS</button>
-                <button type="button" class="myProfile">MY PROFILE</button>
-                <button type="button" class="quitGame">QUIT</button>
+                <button class="myBtn" onclick="location.href = '/create-game';" type="button">CREATE GAME</button>
+                <button class="myBtn" type="button">SETTINGS</button>
+                <button class="myBtn" type="button">MY PROFILE</button>
+                <button class="myBtn" type="button">QUIT</button>
             </div>
         </div>`)
 }
