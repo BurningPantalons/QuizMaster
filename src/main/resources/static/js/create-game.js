@@ -15,7 +15,7 @@ $(function () {
     function showPlayers(player) {
         $('.player-table').append(`<tr>
                             <td><span>${player.name}</span><button onclick="editPlayerName()">Change name</button>
-                           <button onclick="deletePlayer(value)" value="${player.name}">Delete</button></td>
+                           <button onclick="deletePlayer(${player.id})" >Delete</button></td>
                             
                        </tr>`
         );
@@ -55,29 +55,16 @@ function savePlayer() {
         error: function () {
             alert('Error!');
         }
-
     });
 }
 
 function deletePlayer(value){
 
-
-
     $.ajax({
         type: 'DELETE',
-        url: 'players',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        data: JSON.stringify(player),
+        url: 'players/' + value,
         success: function () {
             location.reload();
         },
-        error: function () {
-            alert('Error!');
-        }
-
     });
-
 }

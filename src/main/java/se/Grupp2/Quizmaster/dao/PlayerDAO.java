@@ -4,6 +4,8 @@ import org.springframework.stereotype.Repository;
 import se.Grupp2.Quizmaster.Repository.PlayerRepository;
 import se.Grupp2.Quizmaster.models.dto.PlayerDTO;
 
+import java.util.Optional;
+
 @Repository
 public class PlayerDAO {
 
@@ -19,5 +21,9 @@ public class PlayerDAO {
 
     public Iterable<PlayerDTO> getAllPlayers() {
         return playerRepository.findAll();
+    }
+
+    public void removePlayer(Integer id) {
+        playerRepository.deleteById(id);
     }
 }

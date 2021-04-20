@@ -43,6 +43,9 @@ public class PlayerService {
         return players;
     }
 
+    public void deletePlayer(Integer id) {
+        playerDAO.removePlayer(id);
+    }
 
     private PlayerDTO convertFromPlayer(Player player) {
         return new PlayerDTO(player.getId(), player.getName());

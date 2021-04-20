@@ -23,4 +23,9 @@ public class PlayerController {
     public Player addPlayer(@RequestBody Player player) {
         return playerService.addPlayer(player);
     }
+
+    @DeleteMapping("/{id}")
+    public void removePlayer(@PathVariable ("id")Integer id){
+        playerService.deletePlayer(id);
+    }
 }
