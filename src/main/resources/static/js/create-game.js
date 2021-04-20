@@ -14,10 +14,11 @@ $(function () {
 
     function showPlayers(player) {
         $('.player-table').append(`<tr>
-                            <td><span>${player.name}</span><button onclick="editPlayerName()">Change name</button>
-                           <button onclick="deletePlayer(${player.id})" >Delete</button></td>
-                            
-                       </tr>`
+                                    <td><span>${player.name}</span></td>
+                                    <td><input id="${player.id}" type="text"></td>
+                                    <td><button onclick="changeName(${player.id})">Change name</button></td>
+                                    <td><button onclick="deletePlayer(${player.id})" >Delete</button></td>
+                                   </tr>`
         );
     }
         $.ajax({
@@ -57,6 +58,30 @@ function savePlayer() {
         }
     });
 }
+
+function changeName(value) {
+
+    let newPlayer = {
+        name: $(`#${value}`).val(),
+    };
+
+    $.ajax({
+        type: 'PUT',
+        url: 'players/' + value,
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        data: JSON.stringify(newPlayer),
+        success: function () {
+            location.reload();
+        },
+        error: function () {
+            alert('Error!');
+        }
+    });
+}
+
 
 function deletePlayer(value){
 

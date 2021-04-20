@@ -24,6 +24,11 @@ public class PlayerController {
         return playerService.addPlayer(player);
     }
 
+    @PutMapping("/{id}")
+    public Player changeName(@PathVariable ("id")Integer id, @RequestBody Player newPlayer){
+        return playerService.changeName(newPlayer,id);
+    }
+
     @DeleteMapping("/{id}")
     public void removePlayer(@PathVariable ("id")Integer id){
         playerService.deletePlayer(id);

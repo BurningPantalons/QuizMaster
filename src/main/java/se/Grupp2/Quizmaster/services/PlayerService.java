@@ -34,6 +34,23 @@ public class PlayerService {
 
     }
 
+    public Player changeName(Player player, Integer id) {
+        Player playerToUpdate = getPlayerById(id);
+
+            playerToUpdate.setName(player.getName());
+            playerToUpdate.setId(id);
+
+            PlayerDTO updatedPlayer = playerDAO.addPlayer(convertFromPlayer(playerToUpdate));
+        return convertToPlayer(updatedPlayer);
+    }
+
+    public Player getPlayerById(Integer id) {
+    if (playerDAO.findPlayerById(id).isPresent()) {
+        return convertToPlayer(playerDAO.findPlayerById(id).get());
+    }
+    return null;
+    }
+
     public List<Player> getAllPlayers() {
         List<Player> players = new ArrayList<>();
         for (PlayerDTO playerDTO : playerDAO.getAllPlayers()){

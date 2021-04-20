@@ -23,6 +23,10 @@ public class PlayerDAO {
         return playerRepository.findAll();
     }
 
+    public Optional<PlayerDTO> findPlayerById(Integer id){
+        return playerRepository.findById(id);
+    }
+
     public void removePlayer(Integer id) {
         playerRepository.deleteById(id);
     }
