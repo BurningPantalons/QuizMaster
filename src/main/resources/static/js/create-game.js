@@ -1,23 +1,35 @@
 $(function () {
 
-        $('.menuContainer').append(`<div class="loginContainer">
-            <div class="newUserForm">
+        $('body').append(`<div class="createGameContainer"></div>`)
+        $('.createGameContainer').append(`<div class="addPlayerContainer">
+            <div>
                 <form>
-                    <input type="text" id="name" placeholder="Enter username">  
+                    <input class="addInput" type="text" id="name" placeholder="Enter playername">  
                 </form>
             </div>
-            <div class="newUserButton">
-                <button onclick="savePlayer()">ADD</button>
+            <div>
+                <button class="Btn" onclick="savePlayer()">Add player</button>
             </div>
         </div>`);
+
+        $('.createGameContainer').append(`<table class="player-table">
+                                            <thead>
+                                            <tr>
+                                                <th>Player name</th>
+                                                <th>Change name</th>
+                                                <th>Remove player</th>
+                                            </tr>
+                                            </thead>
+                                            </table>`)
 
 
     function showPlayers(player) {
         $('.player-table').append(`<tr>
-                                    <td><span>${player.name}</span></td>
-                                    <td><input id="${player.id}" type="text"></td>
-                                    <td><button onclick="changeName(${player.id})">Change name</button></td>
-                                    <td><button onclick="deletePlayer(${player.id})" >Delete</button></td>
+                                    <td class="currentName"><span>${player.name}</span></td>
+                                    <td class="inputName"><input id="${player.id}" type="text"></td>
+                                    <td class="saveName"><button class="Btn" onclick="changeName(${player.id})">Save name</button></td>
+                                    <td class="editName"><button class="Btn" onclick="$('.inputName').show();$('.saveName').show();$('.editName').hide();$('.currentName').hide();" >Change name</button></td>
+                                    <td><button class="Btn" onclick="deletePlayer(${player.id})" >Delete</button></td>
                                    </tr>`
         );
     }

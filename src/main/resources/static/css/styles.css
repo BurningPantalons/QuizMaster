@@ -51,3 +51,36 @@ button:active {
     position:relative;
     top:1px;
 }
+
+.Btn {
+    padding: 0.5vh 2vh;
+    margin: 0;
+}
+
+.createGameContainer {
+    padding: 20vh 40vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.addPlayerContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-evenly;
+    margin: 2vh 0 4vh 0;
+}
+.inputName {
+    display: none;
+}
+.saveName {
+    display: none;
+}
+
+table {
+
+}
+tbody {
+
+}
