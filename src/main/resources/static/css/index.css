@@ -1,0 +1,39 @@
+.main {
+    display: flex;
+
+}
+
+.container {
+
+    background: url("/img/FireTemple.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+}
+
+.menuContainer {
+    padding:  25vh 25vh 25vh 25vh;
+    display: flex;
+    justify-content: center;
+
+}
+
+.menuOptions {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+
+}
+
+button {
+    color: blue;
+    margin: 2vh;
+    padding: 1vh;
+}

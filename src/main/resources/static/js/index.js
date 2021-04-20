@@ -5,9 +5,11 @@
 * */
 window.onload = startScreen()
 
+
 function startScreen(){
     $('main').empty();
-    $('main').append(`
+    $('main').append(`<div class="container"></div`);
+    $('.container').append(`
        <div class="menuContainer">
             <div class="menuOptions">
                 <button onclick="location.href = '/create-game';" type="button" class="newGame">CREATE GAME</button>
