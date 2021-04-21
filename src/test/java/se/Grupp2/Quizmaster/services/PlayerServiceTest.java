@@ -15,7 +15,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-
+import se.Grupp2.Quizmaster.services.DiceService;
+import se.Grupp2.Quizmaster.models.Dice;
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -42,7 +43,14 @@ class PlayerServiceTest {
     }
 
     @Test
-    void movePlayer() {
+    void movePlayer_shouldSetNewPosition() {
+        testCreatedPlayer.setPosition(0);
+        DiceService diceService = new DiceService();
+        Dice gameDice = diceService.diceRoll();
+
+        testCreatedPlayer.setPosition(gameDice.getCurrentRoll());
+
+        assertTrue(testCreatedPlayer.getPosition() > 0 && testCreatedPlayer.getPosition() <= gameDice.getNumberOfSides());
 
     }
 
