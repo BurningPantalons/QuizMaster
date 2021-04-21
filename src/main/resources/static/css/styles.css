@@ -78,9 +78,6 @@ button:active {
     display: none;
 }
 
-table {
-
-}
-tbody {
-
+.question {
+    color: white;
 }

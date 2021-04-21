@@ -5,7 +5,7 @@ $(function init(){
 
 function questionWindow() {
     $('body').append(`<div class="question-container">
-            <h1>${question}</h1>
+            <h1 class="question">${question}</h1>
             <button onclick="checkIfRight('${answer1}')">${answer1}</button>
             <button onclick="checkIfRight('${answer2}')">${answer2}</button>
             <button onclick="checkIfRight('${answer3}')">${answer3}</button>

@@ -21,7 +21,7 @@ $(function () {
                                             </tr>
                                             </thead>
                                             </table>`)
-
+        $('.createGameContainer').append(`<div><button onclick="location.href = '/game';">Start game</button></div>`)
 
     function showPlayers(player) {
         $('.player-table').append(`<tr>
