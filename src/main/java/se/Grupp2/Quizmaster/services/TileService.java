@@ -15,31 +15,35 @@ public class TileService {
     private int numberOfTiles = 30;
 
    public List<Tile> populateTiles() {
-        Tile startTile = new Tile(0,
-                true,
-                false,
-                false,
-                false);
-                tiles.add(startTile);
-        for (int i = 1; i <= numberOfTiles; i++){
-            if (i == numberOfTiles){
-                Tile finishTile = new Tile(i,
-                        true,
-                        false,
-                        false,
-                        false);
-                tiles.add(finishTile);
-            } else {
-                Tile questionTile = new Tile(i,
-                        false,
-                        true,
-                        false,
-                        false);
-                tiles.add(questionTile);
-            }
-        }
-       return tiles;
-    }
+       if (tiles.size() == 30) {
+           return tiles;
+       } else {
+           Tile startTile = new Tile(0,
+                   true,
+                   false,
+                   false,
+                   false);
+           tiles.add(startTile);
+           for (int i = 1; i <= numberOfTiles - 1; i++) {
+               if (i == numberOfTiles) {
+                   Tile finishTile = new Tile(i,
+                           true,
+                           false,
+                           false,
+                           false);
+                   tiles.add(finishTile);
+               } else {
+                   Tile questionTile = new Tile(i,
+                           false,
+                           true,
+                           false,
+                           false);
+                   tiles.add(questionTile);
+               }
+           }
+           return tiles;
+       }
+   }
 
     private void addBuff(int numberOfBuffs) {
         int buffedTiles = 0;
