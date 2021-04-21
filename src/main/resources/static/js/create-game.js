@@ -25,10 +25,10 @@ $(function () {
 
     function showPlayers(player) {
         $('.player-table').append(`<tr>
-                                    <td class="currentName"><span>${player.name}</span></td>
-                                    <td class="inputName"><input id="${player.id}" type="text"></td>
-                                    <td class="saveName"><button class="Btn" onclick="changeName(${player.id})">Save name</button></td>
-                                    <td class="editName"><button class="Btn" onclick="$('.inputName').show();$('.saveName').show();$('.editName').hide();$('.currentName').hide();" >Change name</button></td>
+                                    <td class="hide${player.id}"><span>${player.name}</span></td>
+                                    <td style="display:none" class="show${player.id}"><input id="${player.id}" type="text"></td>
+                                    <td style="display:none;" class="show${player.id}"><button class="Btn" onclick="changeName(${player.id})">Save name</button></td>
+                                    <td class="hide${player.id}"><button class="Btn" onclick="$('.show${player.id}').show();$('.hide${player.id}').hide();" >Change name</button></td>
                                     <td><button class="Btn" onclick="deletePlayer(${player.id})" >Delete</button></td>
                                    </tr>`
         );
