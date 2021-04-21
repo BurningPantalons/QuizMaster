@@ -3,6 +3,9 @@ package se.Grupp2.Quizmaster.services;
 
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.assertj.core.api.Assertions;
+import org.mockito.ArgumentMatcher;
+import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import se.Grupp2.Quizmaster.dao.PlayerDAO;
@@ -11,6 +14,8 @@ import se.Grupp2.Quizmaster.models.dto.PlayerDTO;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 
@@ -36,7 +41,18 @@ class PlayerServiceTest {
     }
 
     @Test
+    @DisplayName("Test if name gets changed")
     void changeName() {
+        Player newPlayerName = new Player(2, "Razberryjam");
+        PlayerDTO playerDTOFromDatabaseFirstIteration = new PlayerDTO(2, "Rasmus");
+        PlayerDTO playerDTOFromDatabaseSecondIteration = new PlayerDTO( 2, "Razberryjam");
+
+        Mockito.when(playerDAO.findPlayerById(2)).thenReturn(Optional.of(playerDTOFromDatabaseFirstIteration));
+        Mockito.when(playerDAO.addPlayer(ArgumentMatchers.any(PlayerDTO.class))).thenReturn(playerDTOFromDatabaseSecondIteration);
+        Player currentPlayerName = playerService.changeName(newPlayerName, 2);
+
+        Assertions.assertThat(currentPlayerName.getName()).isEqualTo(newPlayerName.getName());
+
     }
 
     @Test
