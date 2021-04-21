@@ -49,6 +49,18 @@ class PlayerServiceTest {
     }
 
     @Test
+    void addPlayer_shouldAddPlayerAndReturnCorrectId() {
+
+        PlayerDTO playerDTOFromDB = new PlayerDTO(1337, "Megaman");
+        Player newPlayer = new Player(1337, "Megaman");
+
+        Mockito.when(playerDAO.addPlayer(ArgumentMatchers.any(PlayerDTO.class))).thenReturn(playerDTOFromDB);
+        Player createdPlayer = playerService.addPlayer(newPlayer);
+
+        Assertions.assertThat(newPlayer.getId()).isEqualTo(createdPlayer.getId());
+    }
+
+    @Test
     @DisplayName("Test if name gets changed")
     void changeName() {
         Player newPlayerName = new Player(2, "Razberryjam");
@@ -64,7 +76,16 @@ class PlayerServiceTest {
     }
 
     @Test
-    void getPlayerById() {
+    void getPlayerById_shouldFindPlayerByID() {
+
+        PlayerDTO playerDTOFromDB = new PlayerDTO(1337, "Megaman");
+        Player expectedPlayer = new Player(1337, "Megaman");
+
+        Mockito.when(playerDAO.findPlayerById(1337)).thenReturn(Optional.of(playerDTOFromDB));
+        Player createdPlayer = playerService.getPlayerById(1337);
+
+        Assertions.assertThat(createdPlayer.getId()).isEqualTo(expectedPlayer.getId());
+
     }
 
     @Nested
