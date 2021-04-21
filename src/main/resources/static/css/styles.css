@@ -71,13 +71,6 @@ button:active {
     justify-content: space-evenly;
     margin: 2vh 0 4vh 0;
 }
-.inputName {
-    display: none;
-}
-.saveName {
-    display: none;
-}
-
 .question {
     color: white;
 }
