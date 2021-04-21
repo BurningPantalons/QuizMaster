@@ -56,23 +56,34 @@ class PlayerServiceTest {
         }
 
         @Test
-        @DisplayName("Test if you can get all players from db")
-        void getAllPlayers() {
-            List<Player> anticipatedPlayers = new ArrayList<>();
-            anticipatedPlayers.add(new Player(1, "Marcus"));
-            anticipatedPlayers.add(new Player(2, "Rasmus"));
-            anticipatedPlayers.add(new Player(3, "David"));
-            anticipatedPlayers.add(new Player(4, "Stefan"));
-
+        @DisplayName("Test if you get the right amount of players from the db")
+        void getAllPlayersWithSize() {
+            List<Player> expectedPlayers = new ArrayList<>();
+            expectedPlayers.add(new Player(1, "Marcus"));
+            expectedPlayers.add(new Player(2, "Rasmus"));
+            expectedPlayers.add(new Player(3, "David"));
+            expectedPlayers.add(new Player(4, "Stefan"));
 
             Mockito.when(playerDAO.getAllPlayers()).thenReturn(players);
             List<Player> playersFromDB = playerService.getAllPlayers();
 
-            // Check if the size is correct in the database
-            assertEquals(playersFromDB.size(),anticipatedPlayers.size());
+            assertEquals(playersFromDB.size(),expectedPlayers.size());
 
-            // Check if the id & names in the database is correct
-            assertEquals(playersFromDB.toString(),anticipatedPlayers.toString());
+        }
+
+        @Test
+        @DisplayName("Test if the playerdata in the db is correct")
+        void getAllPlayersWithNameAndId() {
+            List<Player> expectedPlayers = new ArrayList<>();
+            expectedPlayers.add(new Player(1, "Marcus"));
+            expectedPlayers.add(new Player(2, "Rasmus"));
+            expectedPlayers.add(new Player(3, "David"));
+            expectedPlayers.add(new Player(4, "Stefan"));
+
+            Mockito.when(playerDAO.getAllPlayers()).thenReturn(players);
+            List<Player> playersFromDB = playerService.getAllPlayers();
+
+            assertEquals(playersFromDB.toString(),expectedPlayers.toString());
 
         }
     }
