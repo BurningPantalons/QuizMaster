@@ -25,6 +25,9 @@ class PlayerServiceTest {
     public static PlayerDAO playerDAO;
     public static PlayerService playerService;
     public List<PlayerDTO> players;
+    public PlayerDTO playerDTOFromDB;
+    Player testCreatedPlayer;
+
 
     @BeforeAll
     public static void init() {
@@ -32,32 +35,37 @@ class PlayerServiceTest {
         playerService = new PlayerService(playerDAO);
     }
 
+    @BeforeEach
+    public void initEach() {
+        playerDTOFromDB = new PlayerDTO(1337, "Megaman");
+        testCreatedPlayer = new Player(1337, "Megaman");
+    }
+
     @Test
     void movePlayer() {
+
     }
 
     @Test
     void addPlayer_shouldAddPlayerAndReturnCorrectName() {
 
-        PlayerDTO playerDTOFromDB = new PlayerDTO(1337, "Megaman");
-        Player newPlayer = new Player(1337, "Megaman");
+
 
         Mockito.when(playerDAO.addPlayer(ArgumentMatchers.any(PlayerDTO.class))).thenReturn(playerDTOFromDB);
-        Player createdPlayer = playerService.addPlayer(newPlayer);
+        Player createdPlayer = playerService.addPlayer(testCreatedPlayer);
 
-        Assertions.assertThat(newPlayer.getName()).isEqualTo(createdPlayer.getName());
+        Assertions.assertThat(testCreatedPlayer.getName()).isEqualTo(createdPlayer.getName());
     }
 
     @Test
     void addPlayer_shouldAddPlayerAndReturnCorrectId() {
 
-        PlayerDTO playerDTOFromDB = new PlayerDTO(1337, "Megaman");
-        Player newPlayer = new Player(1337, "Megaman");
+
 
         Mockito.when(playerDAO.addPlayer(ArgumentMatchers.any(PlayerDTO.class))).thenReturn(playerDTOFromDB);
-        Player createdPlayer = playerService.addPlayer(newPlayer);
+        Player createdPlayer = playerService.addPlayer(testCreatedPlayer);
 
-        Assertions.assertThat(newPlayer.getId()).isEqualTo(createdPlayer.getId());
+        Assertions.assertThat(testCreatedPlayer.getId()).isEqualTo(createdPlayer.getId());
     }
 
     @Test
