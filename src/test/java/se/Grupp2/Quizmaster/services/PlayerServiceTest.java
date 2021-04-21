@@ -37,7 +37,15 @@ class PlayerServiceTest {
     }
 
     @Test
-    void addPlayer() {
+    void addPlayer_shouldAddPlayerAndReturnCorrectName() {
+
+        PlayerDTO playerDTOFromDB = new PlayerDTO(1337, "Megaman");
+        Player newPlayer = new Player(1337, "Megaman");
+
+        Mockito.when(playerDAO.addPlayer(ArgumentMatchers.any(PlayerDTO.class))).thenReturn(playerDTOFromDB);
+        Player createdPlayer = playerService.addPlayer(newPlayer);
+
+        Assertions.assertThat(newPlayer.getName()).isEqualTo(createdPlayer.getName());
     }
 
     @Test
