@@ -1,5 +1,4 @@
 $(function(){
-    $('body').append('<button onclick="questionWindow()" id="quest" >ÖPPNA FRÅGA</button>');
     $('body').append('<button onclick="rolledDice()">ROLL DICE</button>');
     $('body').append('<div class="tileContainer"></div>');
     tiles.forEach(function (tile) {
@@ -10,7 +9,7 @@ $(function(){
 });
 
 function questionWindow() {
-    $('body').prepend(`<div class="question-container">
+    $('body').append(`<div class="question-container">
             <h1 class="question">${question}</h1>
             <button onclick="checkIfRight('${answer1}')">${answer1}</button>
             <button onclick="checkIfRight('${answer2}')">${answer2}</button>
