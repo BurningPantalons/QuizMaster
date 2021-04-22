@@ -12,7 +12,7 @@ $(function () {
             </div>
         </div>`);
 
-        $('.createGameContainer').append(`<table class="player-table">
+        $('.createGameContainer').append(`<table>
                                             <thead>
                                             <tr>
                                                 <th>Player name</th>
@@ -20,15 +20,16 @@ $(function () {
                                                 <th>Remove player</th>
                                             </tr>
                                             </thead>
+                                            <tbody class="tableBody"></tbody>
                                             </table>`)
         $('.createGameContainer').append(`<div><button onclick="location.href = '/game';">Start game</button></div>`)
 
     function showPlayers(player) {
-        $('.player-table').append(`<tr>
+        $('.tableBody').append(`<tr>
                                     <td class="hide${player.id}"><span>${player.name}</span></td>
                                     <td style="display:none" class="show${player.id}"><input id="${player.id}" type="text"></td>
-                                    <td style="display:none;" class="show${player.id}"><button class="Btn" onclick="changeName(${player.id})">Save name</button></td>
-                                    <td class="hide${player.id}"><button class="Btn" onclick="$('.show${player.id}').show();$('.hide${player.id}').hide();" >Change name</button></td>
+                                    <td style="display:none;" class="show${player.id}"><button class="Btn" onclick="changeName(${player.id})">Save</button></td>
+                                    <td class="hide${player.id}"><button class="Btn" onclick="$('.show${player.id}').show();$('.hide${player.id}').hide();">Change</button></td>
                                     <td><button class="Btn" onclick="deletePlayer(${player.id})" >Delete</button></td>
                                    </tr>`
         );
