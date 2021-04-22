@@ -42,17 +42,7 @@ class PlayerServiceTest {
         testCreatedPlayer = new Player(1337, "Megaman");
     }
 
-    @Test
-    void movePlayer_shouldSetNewPosition() {
-        testCreatedPlayer.setPosition(0);
-        DiceService diceService = new DiceService();
-        Dice gameDice = diceService.diceRoll();
 
-        testCreatedPlayer.setPosition(gameDice.getCurrentRoll());
-
-        assertTrue(testCreatedPlayer.getPosition() > 0 && testCreatedPlayer.getPosition() <= gameDice.getNumberOfSides());
-
-    }
 
     @Test
     void addPlayer_shouldAddPlayerAndReturnCorrectName() {
@@ -147,6 +137,7 @@ class PlayerServiceTest {
             assertEquals(playersFromDB.toString(),expectedPlayers.toString());
 
         }
+
     }
 
     @Test
