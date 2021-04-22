@@ -1,5 +1,5 @@
 $(function(){
-    $('body').append('<button onclick="rolledDice()">ROLL DICE</button>');
+    $('body').append('<div class="dice-container"><button id="diceBtn" >ROLL DICE</button><div id="dice"></div></div>');
     $('body').append(`<div class="question-container"><div class="question-content">
             <h1 style="color: white">${question}</h1>
             <div class="question-Btn-container">
@@ -21,6 +21,12 @@ $( document ).ready(function() {
         $(".question-container").toggle();
     });
 });
+$( document ).ready(function() {
+    $("#diceBtn").on("click",function(){
+        $("#dice").toggle();
+        printNumber();
+    });
+});
 
 function checkIfRight(answer) {
     if (answer === correctAnswer){
@@ -34,4 +40,8 @@ function checkIfRight(answer) {
 function rolledDice() {
     alert(dice)
     location.reload()
+}
+function printNumber() {
+    let rolledDice = document.getElementById("dice");
+    rolledDice.innerHTML = dice;
 }
